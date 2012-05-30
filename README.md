@@ -1,0 +1,4 @@
+iToggle
+=======
+
+iToggle for jQuery
