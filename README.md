@@ -6,6 +6,9 @@ http://labs.engageinteractive.co.uk/itoggle/
 
 Updated with support for jQuery 1.7
 
+Tested on:
+Chrome
+IE8-9
 
 Requirements
 =============
