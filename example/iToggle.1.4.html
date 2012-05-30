@@ -1,0 +1,260 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Engage Interactive Labs - iToggle, making checkboxes look cool with jQuery!</title>
+	<link href="/favicon.ico" rel="shortcut icon"/>
+	<style type="text/css">
+		<!--
+		@import url("css/reset.css");
+		@import url("css/global.css");
+		-->
+	</style>
+	<link href="../src/engage.itoggle.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="js/chili.js"></script>
+	<script type="text/javascript" src="js/global.js"></script>	
+	<script type="text/javascript" src="../src/engage.itoggle.1.4.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		// Start jQuery goodness
+			$('#itoggle input#example_1').iToggle({
+				easing: 'easeOutExpo',
+				onClickOn: function(){
+					$('#console').show().css({opacity:0}).animate({opacity:1},400);
+					statusUpdate('Console on');
+					$('input:checkbox').addClass('iT_checkbox_on');
+					$('input:radio').addClass('iT_checkbox_on');
+				},
+				onClickOff: function(){
+					statusUpdate('Console off');
+					$('#console').animate({opacity:0},400);
+					$('input:checkbox').removeClass('iT_checkbox_on');
+					$('input:radio').removeClass('iT_checkbox_on');
+				}
+			});
+			$('#itoggle #example_2').iToggle({
+				easing: 'easeOutExpo',
+				onClickOn: function(){
+					statusUpdate('Clicked on '+$(this).attr('for'));
+				},
+				onSlideOn: function(){
+					statusUpdate('Slide on '+$(this).attr('for'));
+				},
+				onClickOff: function(){
+					statusUpdate('Clicked off '+$(this).attr('for'));
+				},
+				onSlideOff: function(){
+					statusUpdate('Slide off '+$(this).attr('for'));
+				}
+			});
+			
+			$('#itoggle #example_3').iToggle({
+				easing: 'easeOutExpo',
+				type: 'radio',
+				onClickOn: function(){
+					statusUpdate('Clicked on '+$(this).attr('for'));
+				},
+				onSlideOn: function(){
+					statusUpdate('Slide on '+$(this).attr('for'));
+				},
+				onClickOff: function(){
+					statusUpdate('Clicked off '+$(this).attr('for'));
+				},
+				onSlideOff: function(){
+					statusUpdate('Slide off '+$(this).attr('for'));
+				}
+			});
+			
+			function statusUpdate(text){
+				$('#console').prepend('<p>'+text+'</p>');
+				$('#console p:nth-child(1)').css({color:'#0F0'});
+				$('#console p:nth-child(2)').css({color:'#0C0'});
+				$('#console p:nth-child(3)').css({color:'#090'});
+				$('#console p:nth-child(4)').css({color:'#090'});
+				$('#console p:nth-child(5)').css({color:'#060'});
+				$('#console p:nth-child(6)').css({color:'#030'});
+				$('#console p:nth-child(7)').remove();
+			}
+		
+		// End jQuery goodness
+		});
+	</script>
+
+</head>
+<body>
+
+<div id="content">
+	<h1 class="itoggle">iToggle for jQuery</h1>
+	<div id="explanation">
+		<p class="intro">A completely unashamed rip of those lovely sliding on/off buttons on the iPhone, making checkboxes (and radio buttons) look good!</p>
+		<p>This started as a really simple little excersise in bordom one evening just to see if we could replicate the look and feel of the iPhone sliding toggles on the web. Now, it's a fully blown plugin that should do most the work for you! There is a template you need to follow, but this just determines a layout, nothing more.</p>
+		<p>In the download you'll find the CSS, HTML, Javascript and a .PSD template that will help you create a unique looking toggle.</p>
+		<h2>Instructions:</h2>
+		<div id="step_1" class="step">
+			<h2><em>.01</em> Set up your page</h2>
+			<p>Before the fun stuff, we have to include all the files in the head of your page. Firstly we have jQuery (of course), the iToggle plugin with CSS and optionally the easing plugin which you can <a href="http://gsgd.co.uk/sandbox/jquery/easing/" target="_blank" title="Download the easing plugin">download here</a>.</p>
+			<p>You also need to create an image. For now though, you can <a href="../src/itoggle.png">download</a> (right click and save as) our faithful recreation. In the download pack I have included a template PSD.</p>
+			<a href="#" class="show_code">Show HTML</a>
+			<div class="code">
+<pre><code class="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/style/engage.itoggle.css&quot;/&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/js/jquery.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/js/easing.js&quot;&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot; src=&quot;/js/engage.itoggle.js&quot;&gt;&lt;/script&gt;</code></pre>
+			</div>
+		</div>
+		<div id="step_2" class="step">
+			<h2><em>.02</em> Adding the HTML</h2>
+			<p>The html is really simple. Just set up a form in the way you would normally. All you need to be aware of is that groups of checkboxes or radio buttons need a container. The easiest is a div with an id. Here is the HTML I used in the examples on this page.</p>
+			<a href="#" class="show_code">Show HTML</a>
+			<div class="code">
+<pre><code class="html">&lt;h3&gt;Example 01&lt;/h3&gt;
+&lt;p&gt;The simplest implementation.&lt;/p&gt;
+&lt;input type=&quot;checkbox&quot; id=&quot;example_1&quot; /&gt;
+&lt;div id=&quot;example_2&quot;&gt;
+	&lt;h3&gt;Example 02&lt;/h3&gt;
+	&lt;p&gt;Using it on a group of checkboxes with labels.&lt;/p&gt;
+	&lt;label for=&quot;example_2a&quot;&gt;Example 2 a&lt;/label&gt;
+	&lt;input type=&quot;checkbox&quot; checked=&quot;checked&quot; id=&quot;example_2a&quot; /&gt;
+	&lt;label for=&quot;example_2b&quot;&gt;Example 2 b&lt;/label&gt;
+	&lt;input type=&quot;checkbox&quot; id=&quot;example_2b&quot; /&gt;
+	&lt;label for=&quot;example_2c&quot;&gt;Example 2 c&lt;/label&gt;
+	&lt;input type=&quot;checkbox&quot; checked=&quot;checked&quot; id=&quot;example_2c&quot; /&gt;
+&lt;/div&gt;
+&lt;div id=&quot;example_3&quot;&gt;
+	&lt;h3&gt;Example 03&lt;/h3&gt;
+	&lt;p&gt;Using it with a group of radio buttons.&lt;/p&gt;
+	&lt;input type=&quot;radio&quot; id=&quot;example_3a&quot; name=&quot;example_3&quot; checked=&quot;checked&quot; /&gt;
+	&lt;input type=&quot;radio&quot; id=&quot;example_3b&quot; name=&quot;example_3&quot; /&gt;
+	&lt;input type=&quot;radio&quot; id=&quot;example_3c&quot; name=&quot;example_3&quot; /&gt;
+&lt;/div&gt;</code></pre>
+			</div>
+		</div>
+		<div id="step_3" class="step">
+			<h2><em>.03</em> Configure the plugin</h2>
+			<p>Calling the plugin is easy. If you are targeting an individual checkbox then just give it an id and use that. If you are targeting multiple checkboxes or radio buttons then target the container.</p>
+			<p>There are a few options and callbacks in place to help you make the most of the pluggin:</p>
+			<ul class="list">
+				<li><strong>type:</strong> Checkbox or Radio. The default is checkbox.</li>
+				<li><strong>keepLabel:</strong> If your site has a non-javascript version you may have used labels, if you don't need them any more, set this to false. Default is true.</li>
+				<li><strong>easing:</strong> If you downloaded the easing plugin you can specify an easing option here. Default is none.</li>
+				<li><strong>speed:</strong> This is how fast the slide happens. I wouldn't set this too high. 200 is default.</li>
+				<li><strong>onClick:</strong> This callback will fire when you click.</li>
+				<li><strong>onClickOn:</strong> This one will only fire when you click to turn a toggle on.</li>
+				<li><strong>onClickOff:</strong> And this one only to turn off.</li>
+				<li><strong>onSlide:</strong> This callback will fire when the toggle has finnished sliding.</li>
+				<li><strong>onSlideOn:</strong> This one will fire when the toggle has finished sliding on.</li>
+				<li><strong>onSlideOff:</strong> And this one when it's finished sliding off.</li>
+			</ul>
+			<p>If you don't need to change a setting or use a callback, you don't need to include it in the settings list.</p>
+			<a href="#" class="show_code">Show Javascript</a>
+			<div class="code">
+<pre><code class="js">$(document).ready(function() {
+	$(&#039;input#example&#039;).iToggle({
+		easing: &#039;easeOutExpo&#039;,
+		type: &#039;radio&#039;,
+		keepLabel: true,
+		easing: &#039;easeInExpo&#039;,
+		speed: 300,
+		onClick: function(){
+			//Function here
+		},
+		onClickOn: function(){
+			//Function here
+		},
+		onClickOff: function(){
+			//Function here
+		},
+		onSlide: function(){
+			//Function here
+		},
+		onSlideOn: function(){
+			//Function here
+		},
+		onSlideOff: function(){
+			//Function here
+		},
+	});
+});</code></pre>
+			</div>
+		</div>
+		<div id="step_4" class="step">
+			<h2><em>.04</em> Customise the CSS</h2>
+			<p>The CSS is pretty simple as well really. Just style it like you would any other element. The html that is created by the javascript is just a label with an empty span inside.</p>
+			<p>When you click the toggle, all that happens is the background on the label slides from 0% to 100%. The span is simply an overlay that gives the toggle the illusion of depth. To simpify things you don't need to use the span, you could just give it a border.</p>
+			<p>The final bit of CSS just hides the existing inputs by shifting them way off the page.</p>
+			<a href="#" class="show_code">Show CSS</a>
+			<div class="code">
+<pre><code class="css">div#itoggle label.ilabel{
+	display:block;
+	font-size:12px;
+	padding-bottom:10px;
+	cursor:pointer;
+	}
+
+div#itoggle label.itoggle,
+div#itoggle label.itoggle span{
+	display: block;
+	width: 93px;
+	height: 27px;
+	margin-bottom: 20px;
+	background: url(../images/itoggle.png) left bottom no-repeat;
+	cursor:pointer;
+	text-indent:-5000px;
+	}
+div#itoggle label.itoggle.iToff{
+	background-position:right bottom;
+	}
+div#itoggle label.itoggle span{
+	background-position: left top;
+	margin: 0;
+	}
+div#itoggle input.iT_checkbox{
+	position:absolute;
+	top:-9999px;
+	left:-9999px;
+	}
+
+/*	
+	If you want the corners to be
+	transparent, add these two lines
+	to the main block above. Only
+	works on webkit and mozilla browsers
+	For more reliable results, make your
+	own png using the supplied .psd
+	
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+*/</code></pre>
+		</div>
+	</div>
+	<div id="itoggle" class="project">
+		<h3>Example 01</h3>
+		<p>The simplest implementation.</p>
+		<input type="checkbox" id="example_1" />
+		<div id="example_2">
+			<h3>Example 02</h3>
+			<p>Using it on a group of checkboxes with labels.</p>
+			<label for="example_2a">Example 2 a</label>
+			<input type="checkbox" checked="checked" id="example_2a" />
+			<label for="example_2b">Example 2 b</label>
+			<input type="checkbox" id="example_2b" />
+			<label for="example_2c">Example 2 c</label>
+			<input type="checkbox" checked="checked" id="example_2c" />
+		</div>
+		<div id="example_3">
+			<h3>Example 03</h3>
+			<p>Using it with a group of radio buttons.</p>
+			<input type="radio" id="example_3a" name="example_3" checked="checked" />
+			<input type="radio" id="example_3b" name="example_3" />
+			<input type="radio" id="example_3c" name="example_3" />
+		</div>
+		<div id="console">
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
