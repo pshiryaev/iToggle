@@ -4,7 +4,7 @@ A completely unashamed rip of those lovely sliding on/off buttons on the iPhone,
 Original: Engage Interactive's iToggle,
 http://labs.engageinteractive.co.uk/itoggle/
 
-Updated with support for jQuery 1.7
+Updated with support for jQuery 1.7-1.9
 
 Tested on:
 * Chrome
@@ -12,4 +12,4 @@ Tested on:
 
 Requirements
 =============
-* jQuery v1.7
+* jQuery v1.7+

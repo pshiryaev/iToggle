@@ -36,7 +36,7 @@ $(document).ready(function(){
 	$('div#overlay').click(function(){
 		code('hide');
 	});
-	$('div.options a.close').live('click', function(){
+	$(document).on("click", 'div.options a.close', function() {
 		code('hide');
 		return false;
 	});
