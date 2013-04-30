@@ -9,13 +9,14 @@
 		<!--
 		@import url("css/reset.css");
 		@import url("css/global.css");
+		@import url("css/example.css");
 		-->
 	</style>
 	<link href="../src/engage.itoggle.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
 	<script type="text/javascript" src="js/chili.js"></script>
-	<script type="text/javascript" src="js/global.js"></script>	
+	<script type="text/javascript" src="js/global.js"></script>
 	<script type="text/javascript" src="../src/engage.itoggle.1.7.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -50,7 +51,7 @@
 					statusUpdate('Slide off '+$(this).attr('for'));
 				}
 			});
-			
+
 			$('#itoggle #example_3').iToggle({
 				easing: 'easeOutExpo',
 				type: 'radio',
@@ -67,7 +68,7 @@
 					statusUpdate('Slide off '+$(this).attr('for'));
 				}
 			});
-			
+
 			function statusUpdate(text){
 				$('#console').prepend('<p>'+text+'</p>');
 				$('#console p:nth-child(1)').css({color:'#0F0'});
@@ -78,7 +79,7 @@
 				$('#console p:nth-child(6)').css({color:'#030'});
 				$('#console p:nth-child(7)').remove();
 			}
-		
+
 		// End jQuery goodness
 		});
 	</script>
@@ -217,14 +218,14 @@ div#itoggle input.iT_checkbox{
 	left:-9999px;
 	}
 
-/*	
+/*
 	If you want the corners to be
 	transparent, add these two lines
 	to the main block above. Only
 	works on webkit and mozilla browsers
 	For more reliable results, make your
 	own png using the supplied .psd
-	
+
 	-moz-border-radius:6px;
 	-webkit-border-radius:6px;
 */</code></pre>

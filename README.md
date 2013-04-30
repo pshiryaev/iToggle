@@ -12,4 +12,4 @@ Tested on:
 
 Requirements
 =============
-* jQuery v1.7+
+* jQuery v1.4 or jQuery v1.7+

@@ -26,20 +26,21 @@ $(document).ready(function(){
 		code('show', $(this).next('div.code'));
 		return false;
 	});
-	
+
 	// ONE CLICK THAT WILL ONLY WORK ONCE
 	$('a.show_code').one('click', function(){
 		$(this).next('div.code').children('pre').children('code').chili(); //Load chili on click
 	});
-	
+
 	// CLOSE THE VIEWER
 	$('div#overlay').click(function(){
 		code('hide');
 	});
-	$(document).on("click", 'div.options a.close', function() {
-		code('hide');
-		return false;
-	});
+
+	// $(document).on("click", 'div.options a.close', function() {
+	// 	code('hide');
+	// 	return false;
+	// });
 
 	// SHOW OR HIDE FUNCTION
 	function code(action, object){
