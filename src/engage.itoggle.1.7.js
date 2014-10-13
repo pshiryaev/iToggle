@@ -104,7 +104,7 @@
 		$('label.ilabel').click(function(){
 			if(clickEnabled == true){
 				clickEnabled = false;
-				slide($(this).next('label.itoggle'));
+				slide($('label.itoggle[for='+$(this).attr('for')+']'));
 			}
 			return false;
 		});
